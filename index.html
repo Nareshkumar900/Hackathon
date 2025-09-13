@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echoes of Sikkim</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1617469165786-8007eda3caa7?q=80&w=2940&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .section-heading {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 800px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        .template-card {
+            background-color: #334155;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .template-card:hover {
+            background-color: #475569;
+        }
+        
+        .gallery-card {
+            background-color: #1f2937;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        
+        .gallery-card img {
+            border-radius: 0.5rem;
+            width: 100%;
+            height: auto;
+        }
+        
+        .roadmap-modal-content {
+            background-color: #2d3748;
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+        
+        .roadmap-modal-iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="ES.zip/1.jpg" alt="Echoes of Sikkim Logo" class="h-8 w-8">
+                <a href="#" class="text-xl font-bold text-gray-900" data-lang-key="websiteTitle">Echoes of Sikkim</a>
+            </div>
+            <ul class="flex space-x-6 text-gray-600 font-medium items-center">
+                <li><a href="#about" class="hover:text-indigo-600" data-lang-key="aboutLink">About</a></li>
+                <li><a href="#features" class="hover:text-indigo-600" data-lang-key="featuresLink">Features</a></li>
+                <li><a href="#contact" class="hover:text-indigo-600" data-lang-key="contactLink">feedback</a></li>
+                <li>
+                    <select id="language-selector" class="rounded-full px-2 py-1 bg-gray-200">
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ne">नेपाली</option>
+                        <option value="bhutia">བྷུ་ཏི་ཡ།</option>
+                        <option value="sikkimese">སིཀ་ཀིམ་སི།</option>
+                        <option value="lep">རོང་།</option>
+                        <option value="ta">தமிழ்</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-bg flex items-center justify-center text-center py-20 px-4 sm:py-32">
+        <div class="max-w-4xl mx-auto text-white">
+            <h1 class="text-6xl font-extrabold leading-tight mb-4">
+                <span class="text-white" data-lang-key="heroTitle1">Heritage </span>
+                <span class="text-yellow-400" data-lang-key="heroTitle2">Journey </span>
+                <span class="text-white" data-lang-key="heroTitle1">of </span>
+                <span class="text-yellow-400" data-lang-key="heroTitle3"> Sikkim</span>
+            </h1>
+
+            <a href="#features" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-12 rounded-full transition-colors duration-300 shadow-lg" data-lang-key="exploreBtn">Explore ></a>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl font-bold mb-8 text-center section-heading" data-lang-key="missionTitle">Our Mission</h2>
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <p class="text-lg leading-relaxed text-gray-600" data-lang-key="missionText">
+                    Sikkim is home to over 200 monasteries, some dating back to the 17th century. These sites are not just places of worship but also repositories of priceless art, ancient manuscripts, and a rich cultural legacy. Our project aims to create a digital platform
+                    to promote tourism to these remote locations while ensuring their long-term preservation for future generations. We believe technology can bridge the gap between tradition and modernity.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gray-50 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold mb-12 text-center section-heading" data-lang-key="featuresTitle">Key Features</h2>
+            <div class="flex flex-col space-y-8">
+                <!-- Feature Card 1 -->
+                <div class="w-full bg-white rounded-xl shadow-lg p-6 card cursor-pointer" id="cultureCard">
+                    <div class="flex items-center justify-center w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18v-1a4 4 0 014-4h2a4 4 0 014 4v1a1 1 0 01-1 1H6a1 1 0 01-1-1zM11 9.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-lang-key="cultureTraditionTitle">Culture & Tradition</h3>
+                    <p class="text-gray-600" data-lang-key="cultureTraditionText">Explore the traditions, arts, and way of life of the Sikkimese people.</p>
+                </div>
+                <!-- Feature Card 2 -->
+                <div class="w-full bg-white rounded-xl shadow-lg p-6 card cursor-pointer" id="touristPlaceCard">
+                    <div class="flex items-center justify-center w-16 h-16 bg-green-100 text-green-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-lang-key="touristPlaceTitle">Tourist Place</h3>
+                    <p class="text-gray-600" data-lang-key="touristPlaceText">Access a repository of high-resolution images of murals, Thangkas, and ancient manuscripts for cultural and academic research.</p>
+                </div>
+                <!-- Feature Card 3 - Link to Google Maps without geolocation -->
+                <div class="w-full bg-white rounded-xl shadow-lg p-6 card cursor-pointer" id="roadmapGuideCard">
+                    <div class="flex items-center justify-center w-16 h-16 bg-yellow-100 text-yellow-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2" data-lang-key="roadMapTitle">Road Map Guide</h3>
+                    <p class="text-gray-600" data-lang-key="roadMapText">Find nearby hotels and restaurants in Gangtok.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4">
+        <div class="container mx-auto max-w-2xl">
+            <h2 class="text-3xl font-bold mb-8 text-center section-heading" data-lang-key="contactTitle">Get in Touch</h2>
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <form id="contactForm">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2" data-lang-key="nameLabel">Name</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2" data-lang-key="emailLabel">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="mobile" class="block text-gray-700 font-semibold mb-2" data-lang-key="mobileLabel">Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required pattern="[0-9]{10}" maxlength="10" title="Please enter a 10-digit mobile number.">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2" data-lang-key="reasonLabel">Reason</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Enter your reason here..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required data-lang-key="reasonPlaceholder"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-300" data-lang-key="sendMessageBtn">Send Message</button>
+                </form>
+                <div id="formMessage" class="mt-4 text-center hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Tourist Place Categories -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content relative bg-gray-900 rounded-xl shadow-lg p-8">
+            <span class="absolute top-4 left-4 cursor-pointer text-white hover:text-gray-400" id="backToMain">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </span>
+            <span class="close" id="closeCategoryModal">&times;</span>
+            <div class="text-white text-center text-3xl font-bold mb-6" data-lang-key="exploreTitle">Explore Tourist Places</div>
+            <div id="templateGallery" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="template-card" data-category="Temples" data-lang-key="templesCard">
+                    <h4 class="text-xl font-bold mb-1" data-lang-key="templesTitle">Temples</h4>
+                    <p class="text-gray-400 text-sm" data-lang-key="templesText">Find spiritual sites and sacred places</p>
+                </div>
+                <div class="template-card" data-category="Mountains & Hills" data-lang-key="mountainsCard">
+                    <h4 class="text-xl font-bold mb-1" data-lang-key="mountainsTitle">Mountains & Hills</h4>
+                    <p class="text-gray-400 text-sm" data-lang-key="mountainsText">Discover trekking spots and scenic views</p>
+                </div>
+                <div class="template-card" data-category="Rivers" data-lang-key="riversCard">
+                    <h4 class="text-xl font-bold mb-1" data-lang-key="riversTitle">Rivers</h4>
+                    <p class="text-gray-400 text-sm" data-lang-key="riversText">Explore serene rivers and water bodies</p>
+                </div>
+                <div class="template-card" data-category="Nature" data-lang-key="natureCard">
+                    <h4 class="text-xl font-bold mb-1" data-lang-key="natureTitle">Nature</h4>
+                    <p class="text-gray-400 text-sm" data-lang-key="natureText">Find forests, waterfalls, and nature parks</p>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- Modal for Gallery -->
+        <div id="galleryModal" class="modal">
+            <div class="modal-content relative bg-gray-900 rounded-xl shadow-lg p-8">
+                <span class="absolute top-4 left-4 cursor-pointer text-white hover:text-gray-400" id="backToCategories">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </span>
+                <span class="close" id="closeGalleryModal">&times;</span>
+                <div id="galleryTitle" class="text-white text-center text-3xl font-bold mb-6"></div>
+                <div id="imageGallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Image content will be injected here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Culture & Tradition -->
+        <div id="cultureModal" class="modal">
+            <div class="modal-content relative bg-gray-900 text-white rounded-xl shadow-lg p-8">
+                <span class="absolute top-4 left-4 cursor-pointer text-white hover:text-gray-400" id="backFromCulture">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </span>
+                <span class="close" id="closeCultureModal">&times;</span>
+                <div class="text-center text-3xl font-bold mb-6" data-lang-key="cultureModalTitle">Culture & Tradition</div>
+
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 section-heading" data-lang-key="traditionsTitle">Traditions in Sikkim</h3>
+                    <p class="mb-4" data-lang-key="traditionIntro">
+                        Sikkimese traditions are deeply rooted in Buddhist principles, honoring both nature and spirituality.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li data-lang-key="traditionOne">
+                            **Chaam Dances:** The most vibrant tradition, these masked dances are performed by lamas during festivals. They depict morality plays and the triumph of good over evil.
+                        </li>
+                        <li data-lang-key="traditionTwo">
+                            **Lha-soel:** This tradition involves the worship of Mount Kanchenjunga as a sacred guardian deity. Festivals like Pang Lhabsol are celebrated to pay homage to the mountain and seek its blessings.
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 section-heading" data-lang-key="cultureTopicTitle">Culture of Sikkim</h3>
+                    <p class="mb-4" data-lang-key="cultureIntro">
+                        Sikkim's culture is a beautiful blend of its indigenous communities and neighboring regions, creating a unique and harmonious society.
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li data-lang-key="cultureOne">
+                            **Ethnic Diversity:** The culture is primarily a mix of the indigenous **Lepcha** people, the Tibetan-origin **Bhutias**, and the **Nepalese**, each contributing their own language, traditions, and cuisine to the state's identity.
+                        </li>
+                        <li data-lang-key="cultureTwo">
+                            **Art and Handicrafts:** Traditional art forms include intricate Thankga painting, wood carving, and weaving. These crafts often depict Buddhist deities and scenes from religious texts.
+                        </li>
+                        <li data-lang-key="cultureThree">
+                            **Cuisine:** Sikkimese cuisine is a blend of Nepalese and Tibetan influences. Staples like Momo, Thukpa, and Phagshapa are widely enjoyed and reflect the local ingredients and climate.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Roadmap Guide -->
+        <div id="roadmapModal" class="modal">
+            <div class="modal-content relative roadmap-modal-content">
+                <span class="absolute top-4 left-4 cursor-pointer text-white hover:text-gray-400" id="backFromRoadmap">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </span>
+                <span class="close" id="closeRoadmapModal">&times;</span>
+                <div class="text-center text-white text-3xl font-bold mb-6" data-lang-key="roadMapModalTitle">Road Map Guide</div>
+                <div id="roadmapContent">
+                    <header>
+                        <h1 class="gradient-text text-xl sm:text-2xl font-extrabold text-white">Welcome to Sikkim Monasteries & Tourist Spots</h1>
+                        <nav class="hidden">
+                            <a href="#about" class="text-white">Home</a>
+                            <a href="#features" class="text-white">Features</a>
+                            <a href="#contact" class="text-white">feedback</a>
+                        </nav>
+                    </header>
+
+                    <main>
+                        <h2 class="gradient-text text-lg sm:text-xl font-bold text-white mt-4">Discover the Spiritual and Scenic Beauty of Sikkim</h2>
+                        <p class="text-white text-sm">Explore ancient monasteries, vibrant culture, and breathtaking tourist spots of Sikkim.</p>
+
+                        <!-- Interactive Maps Section -->
+                        <section class="maps mt-6">
+                            <h2 class="gradient-text text-lg font-bold text-white">Find Places on Map</h2>
+
+                            <label for="locationSelect" class="block text-white font-bold text-sm mt-4">Select a Place:</label>
+                            <select id="locationSelect" class="w-full mt-2 p-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3545.22441880696!2d88.53345392452012!3d27.30616424307334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a3a012c5e107%3A0xba94d4c4385ff03!2sRumtek%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1757518544692!5m2!1sen!2sin">
+                                Rumtek Monastery
+                            </option>
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3545.89941880696!2d88.471234!3d27.318765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a2a1a3b4c5d%3A0x123456789abcdef!2sPemayangtse%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1757518544693!5m2!1sen!2sin">
+                                Pemayangtse Monastery
+                            </option>
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.123456!2d88.402345!3d27.325678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a1b2c3d4e5f%3A0xabcdef123456789!2sTashiding%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1757518544694!5m2!1sen!2sin">
+                                Tashiding Monastery
+                            </option>
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3546.567890!2d88.616789!3d27.317890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a3b4c5d6e7f%3A0xabcdefabcdef123!2sHanuman%20Tok%2C%20Gangtok!5e0!3m2!1sen!2sin!4v1757518544695!5m2!1sen!2sin">
+                                Hanuman Tok, Gangtok
+                            </option>
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3547.123456!2d88.613567!3d27.331234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a3c5d6e7f8a%3A0xabcdefabcdef124!2sBuddha%20Park%2C%20Gangtok!5e0!3m2!1sen!2sin!4v1757518544696!5m2!1sen!2sin">
+                                Buddha Park, Gangtok
+                            </option>
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3548.234567!2d88.620123!3d27.409876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a4b5c6d7e8f%3A0xabcdefabcdef125!2sYumthang%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1757518544697!5m2!1sen!2sin">
+                                Yumthang Valley
+                            </option>
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3549.345678!2d88.621234!3d27.421234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a5c6d7e8f9a%3A0xabcdefabcdef126!2sLachung%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1757518544698!5m2!1sen!2sin">
+                                Lachung
+                            </option>
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3550.456789!2d88.535678!3d27.151234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a6d7e8f9a0b%3A0xabcdefabcdef127!2sNamchi%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1757518544699!5m2!1sen!2sin">
+                                Namchi
+                            </option>
+                            <option value="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.567890!2d88.755678!3d27.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a7e8f9a0b1c%3A0xabcdefabcdef128!2sZuluk%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1757518544700!5m2!1sen!2sin">
+                                Zuluk
+                            </option>
+                        </select>
+
+                            <div class="map-container">
+                                <iframe id="locationMap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3545.22441880696!2d88.53345392452012!3d27.30616424307334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e6a3a012c5e107%3A0xba94d4c4385ff03!2sRumtek%2C%20Sikkim!5e0!3m2!1sen!2sin!4v1757518544692!5m2!1sen!2sin"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                            </iframe>
+                            </div>
+                        </section>
+                    </main>
+
+                    <!-- JavaScript for interactive map -->
+                    <script>
+                        const select = document.getElementById("locationSelect");
+                        const map = document.getElementById("locationMap");
+
+                        select.addEventListener("change", function() {
+                            map.src = this.value;
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-6 mt-16">
+            <div class="container mx-auto text-center text-sm">
+                <p data-lang-key="copyrightText">&copy; 2025 Team Horizon. All rights reserved.</p>
+                <p class="mt-2" data-lang-key="hackathonText">@ 2025 echoes of sikkim</p>
+            </div>
+        </footer>
+
+        <script>
+            const translations = {
+                en: {
+                    websiteTitle: "Echoes of Sikkim",
+                    aboutLink: "About",
+                    featuresLink: "Features",
+                    contactLink: "Contact",
+                    heroTitle: "Heritage Journey",
+                    exploreBtn: "Explore",
+                    missionTitle: "Our Mission",
+                    missionText: "Sikkim is home to over 200 monasteries, some dating back to the 17th century. These sites are not just places of worship but also repositories of priceless art, ancient manuscripts, and a rich cultural legacy. Our project aims to create a digital platform to promote tourism to these remote locations while ensuring their long-term preservation for future generations. We believe technology can bridge the gap between tradition and modernity.",
+                    featuresTitle: "Key Features",
+                    cultureTraditionTitle: "Culture & Tradition",
+                    cultureTraditionText: "Explore the traditions, arts, and way of life of the Sikkimese people.",
+                    touristPlaceTitle: "Tourist Place",
+                    touristPlaceText: "Access a repository of high-resolution images of murals, Thangkas, and ancient manuscripts for cultural and academic research.",
+                    roadMapTitle: "Road Map Guide",
+                    roadMapText: "Find nearby hotels and restaurants in Gangtok.",
+                    contactTitle: "Get in Touch",
+                    nameLabel: "Name",
+                    emailLabel: "Email",
+                    mobileLabel: "Mobile Number",
+                    reasonLabel: "Reason",
+                    reasonPlaceholder: "Enter your reason here...",
+                    sendMessageBtn: "Send Message",
+                    formSuccessMessage: "Thank you for your reason! We will get back to you shortly.",
+                    exploreTitle: "Explore Tourist Places",
+                    templesTitle: "Temples",
+                    templesText: "Find spiritual sites and sacred places",
+                    mountainsTitle: "Mountains & Hills",
+                    mountainsText: "Discover trekking spots and scenic views",
+                    riversTitle: "Rivers",
+                    riversText: "Explore serene rivers and water bodies",
+                    natureTitle: "Nature",
+                    natureText: "Find forests, waterfalls, and nature parks",
+                    cultureModalTitle: "Culture & Tradition",
+                    traditionsTitle: "Traditions in Sikkim",
+                    traditionIntro: "Sikkimese traditions are deeply rooted in Buddhist principles, honoring both nature and spirituality.",
+                    traditionOne: "**Chaam Dances:** The most vibrant tradition, these masked dances are performed by lamas during festivals. They depict morality plays and the triumph of good over evil.",
+                    traditionTwo: "**Lha-soel:** This tradition involves the worship of Mount Kanchenjunga as a sacred guardian deity. Festivals like Pang Lhabsol are celebrated to pay homage to the mountain and seek its blessings.",
+                    cultureTopicTitle: "Culture of Sikkim",
+                    cultureIntro: "Sikkim's culture is a beautiful blend of its indigenous communities and neighboring regions, creating a unique and harmonious society.",
+                    cultureOne: "**Ethnic Diversity:** The culture is primarily a mix of the indigenous **Lepcha** people, the Tibetan-origin **Bhutias**, and the **Nepalese**, each contributing their own language, traditions, and cuisine to the state's identity.",
+                    cultureTwo: "**Art and Handicrafts:** Traditional art forms include intricate Thankga painting, wood carving, and weaving. These crafts often depict Buddhist deities and scenes from religious texts.",
+                    cultureThree: "**Cuisine:** Sikkimese cuisine is a blend of Nepalese and Tibetan influences. Staples like Momo, Thukpa, and Phagshapa are widely enjoyed and reflect the local ingredients and climate.",
+                    copyrightText: "© 2025 Team Horizon. All rights reserved.",
+                    hackathonText: "echoes of sikkim",
+                    roadMapModalTitle: "Road Map Guide"
+                },
+                hi: {
+                    websiteTitle: "सिक्किम की गूंज",
+                    aboutLink: "के बारे में",
+                    featuresLink: "विशेषताएँ",
+                    contactLink: "संपर्क करें",
+                    heroTitle: "विरासत यात्रा",
+                    exploreBtn: "अन्वेषण करें",
+                    missionTitle: "हमारा मिशन",
+                    missionText: "सिक्किम 200 से अधिक मठों का घर है, जिनमें से कुछ 17वीं शताब्दी के हैं। ये स्थल सिर्फ पूजा के स्थान नहीं हैं, बल्कि अमूल्य कला, प्राचीन पांडुलिपियों और समृद्ध सांस्कृतिक विरासत के भंडार भी हैं। हमारा प्रोजेक्ट इन दूरस्थ स्थानों में पर्यटन को बढ़ावा देने के लिए एक डिजिटल प्लेटफॉर्म बनाना है, साथ ही भविष्य की पीढ़ियों के लिए उनके दीर्घकालिक संरक्षण को सुनिश्चित करना है। हमारा मानना है कि प्रौद्योगिकी परंपरा और आधुनिकता के बीच के अंतर को पाट सकती है।",
+                    featuresTitle: "प्रमुख विशेषताएँ",
+                    cultureTraditionTitle: "संस्कृति और परंपरा",
+                    cultureTraditionText: "सिक्किम के लोगों की परंपराओं, कलाओं और जीवन शैली का अन्वेषण करें।",
+                    touristPlaceTitle: "पर्यटन स्थल",
+                    touristPlaceText: "सांस्कृतिक और शैक्षणिक अनुसंधान के लिए भित्तिचित्रों, थंगकास और प्राचीन पांडुलिपियों की उच्च-रिज़ॉल्यूशन वाली छवियों का भंडार प्राप्त करें।",
+                    roadMapTitle: "सड़क मानचित्र मार्गदर्शिका",
+                    roadMapText: "गंगटोक में पास के होटल और रेस्तरां खोजें।",
+                    contactTitle: "संपर्क करें",
+                    nameLabel: "नाम",
+                    emailLabel: "ईमेल",
+                    mobileLabel: "मोबाइल नंबर",
+                    reasonLabel: "कारण",
+                    reasonPlaceholder: "अपना कारण यहाँ दर्ज करें...",
+                    sendMessageBtn: "संदेश भेजें",
+                    formSuccessMessage: "आपके कारण के लिए धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।",
+                    exploreTitle: "पर्यटन स्थलों का अन्वेषण करें",
+                    templesTitle: "मंदिर",
+                    templesText: "आध्यात्मिक स्थल और पवित्र स्थान खोजें",
+                    mountainsTitle: "पहाड़ और पहाड़ियाँ",
+                    mountainsText: "ट्रेकिंग स्थल और सुंदर दृश्य खोजें",
+                    riversTitle: "नदियाँ",
+                    riversText: "शांत नदियों और जल निकायों का अन्वेषण करें",
+                    natureTitle: "प्रकृति",
+                    natureText: "जंगल, झरने और प्रकृति पार्क खोजें",
+                    cultureModalTitle: "संस्कृति और परंपरा",
+                    traditionsTitle: "सिक्किम में परंपराएँ",
+                    traditionIntro: "सिक्किम की परंपराएँ प्रकृति और आध्यात्मिकता दोनों का सम्मान करते हुए बौद्ध सिद्धांतों में गहराई से निहित हैं।",
+                    traditionOne: "**छाम नृत्य:** सबसे जीवंत परंपरा, ये नकाबपोश नृत्य त्योहारों के दौरान लामाओं द्वारा किए जाते हैं। वे नैतिकता के नाटकों और बुराई पर अच्छाई की जीत को दर्शाते हैं।",
+                    traditionTwo: "**ल्हा-सोएल:** इस परंपरा में माउंट कंचनजंगा को एक पवित्र संरक्षक देवता के रूप में पूजा जाता है। पहाड़ को श्रद्धांजलि अर्पित करने और उसका आशीर्वाद प्राप्त करने के लिए पैंग ल्हाबसोल जैसे त्योहार मनाए जाते हैं।",
+                    cultureTopicTitle: "सिक्किम की संस्कृति",
+                    cultureIntro: "सिक्किम की संस्कृति अपनी स्वदेशी समुदायों और पड़ोसी क्षेत्रों का एक सुंदर मिश्रण है, जो एक अद्वितीय और सामंजस्यपूर्ण समाज का निर्माण करती है।",
+                    cultureOne: "**जातीय विविधता:** संस्कृति मुख्य रूप से स्वदेशी **लेपचा** लोगों, तिब्बती मूल के **भूटिया**, और **नेपाली** का मिश्रण है, जिनमें से प्रत्येक ने राज्य की पहचान में अपनी भाषा, परंपरा और व्यंजन का योगदान दिया है।",
+                    cultureTwo: "**कला और हस्तशिल्प:** पारंपरिक कला रूपों में जटिल थंगका पेंटिंग, लकड़ी की नक्काशी और बुनाई शामिल हैं। ये शिल्प अक्सर बौद्ध देवताओं और धार्मिक ग्रंथों के दृश्यों को दर्शाते हैं।",
+                    cultureThree: "**व्यंजन:** सिक्किम के व्यंजन नेपाली और तिब्बती प्रभावों का मिश्रण हैं। मोमो, थुक्पा और फागशपा जैसे मुख्य व्यंजन व्यापक रूप से पसंद किए जाते हैं और स्थानीय सामग्री और जलवायु को दर्शाते हैं।",
+                    copyrightText: "© 2025 टीम होराइजन। सर्वाधिकार सुरक्षित।",
+                    hackathonText: "echoes of sikkim",
+                },
+                ne: {
+                    websiteTitle: "सिक्किमका प्रतिध्वनि",
+                    aboutLink: "बारेमा",
+                    featuresLink: "विशेषताहरू",
+                    contactLink: "सम्पर्क",
+                    heroTitle: "विरासत यात्रा",
+                    exploreBtn: "अन्वेषण गर्नुहोस्",
+                    missionTitle: "हाम्रो मिशन",
+                    missionText: "सिक्किम २०० भन्दा बढी मठहरूको घर हो, जसमध्ये केही १७ औं शताब्दीका हुन्। यी ठाउँहरू पूजास्थल मात्र नभई अमूल्य कला, प्राचीन पाण्डुलिपिहरू र समृद्ध सांस्कृतिक विरासतका भण्डार पनि हुन्। हाम्रो परियोजनाले यी दुर्गम स्थानहरूमा पर्यटनलाई प्रवर्द्धन गर्न एउटा डिजिटल प्लेटफर्म सिर्जना गर्ने लक्ष्य राखेको छ, साथै भविष्यका पुस्ताका लागि तिनीहरूको दीर्घकालीन संरक्षण सुनिश्चित गर्ने। हामी विश्वास गर्छौं कि प्रविधिले परम्परा र आधुनिकताबीचको खाडललाई पुर्न सक्छ।",
+                    featuresTitle: "मुख्य विशेषताहरू",
+                    cultureTraditionTitle: "संस्कृति र परम्परा",
+                    cultureTraditionText: "सिक्किमे मानिसहरूको परम्परा, कला र जीवनशैलीको अन्वेषण गर्नुहोस्।",
+                    touristPlaceTitle: "पर्यटक स्थल",
+                    touristPlaceText: "सांस्कृतिक र शैक्षिक अनुसन्धानका लागि भित्तिचित्र, थाङ्का र प्राचीन पाण्डुलिपिहरूको उच्च-रिजोल्युसन छविहरूको भण्डारमा पहुँच गर्नुहोस्।",
+                    roadMapTitle: "सडक नक्सा गाइड",
+                    roadMapText: "गान्तोकमा नजिकका होटल र रेस्टुरेन्टहरू फेला पार्नुहोस्।",
+                    contactTitle: "सम्पर्कमा आउनुहोस्",
+                    nameLabel: "नाम",
+                    emailLabel: "ईमेल",
+                    mobileLabel: "मोबाइल नम्बर",
+                    reasonLabel: "कारण",
+                    reasonPlaceholder: "आफ्नो कारण यहाँ प्रविष्ट गर्नुहोस्...",
+                    sendMessageBtn: "सन्देश पठाउनुहोस्",
+                    formSuccessMessage: "तपाईंको कारणको लागि धन्यवाद! हामी चाँडै नै तपाईंसँग सम्पर्क गर्नेछौं।",
+                    exploreTitle: "पर्यटक स्थलहरू अन्वेषण गर्नुहोस्",
+                    templesTitle: "मन्दिरहरू",
+                    templesText: "आध्यात्मिक स्थलहरू र पवित्र स्थानहरू फेला पार्नुहोस्",
+                    mountainsTitle: "पहाड र डाँडाहरू",
+                    mountainsText: "ट्रेकिङ स्थलहरू र सुन्दर दृश्यहरू खोज्नुहोस्",
+                    riversTitle: "नदीहरू",
+                    riversText: "शान्त नदीहरू र जल निकायहरूको अन्वेषण गर्नुहोस्",
+                    natureTitle: "प्रकृति",
+                    natureText: "जंगल, झरना र प्रकृति पार्कहरू फेला पार्नुहोस्",
+                    cultureModalTitle: "संस्कृति र परम्परा",
+                    traditionsTitle: "सिक्किममा परम्पराहरू",
+                    traditionIntro: "सिक्किमी परम्पराहरू प्रकृति र आध्यात्मिकता दुवैलाई सम्मान गर्दै बौद्ध सिद्धान्तहरूमा गहिरो रूपमा निहित छन्।",
+                    traditionOne: "**छाम नृत्य:** सबैभन्दा जीवन्त परम्परा, यी नकाबपोश नृत्यहरू चाडपर्वहरूमा लामाहरूद्वारा गरिन्छ। तिनीहरू नैतिकताका नाटकहरू र दुष्टमाथि असलको विजय चित्रण गर्छन्।",
+                    traditionTwo: "**ल्हा-सोएल:** यो परम्परामा कञ्चनजङ्घा पर्वतलाई पवित्र संरक्षक देवताको रूपमा पूजा गरिन्छ। पहाडलाई श्रद्धाञ्जली अर्पण गर्न र यसको आशीर्वाद खोज्न पाङ् ल्ह्याबसोल जस्ता चाडपर्वहरू मनाइन्छ।",
+                    cultureTopicTitle: "सिक्किमको संस्कृति",
+                    cultureIntro: "सिक्किमको संस्कृति यसको आदिवासी समुदाय र छिमेकी क्षेत्रहरूको सुन्दर मिश्रण हो, जसले एक अद्वितीय र सामंजस्यपूर्ण समाज सिर्जना गर्दछ।",
+                    cultureOne: "**जातीय विविधता:** संस्कृति मुख्यतया आदिवासी **लेप्चा** मानिसहरू, तिब्बती मूलका **भुटिया** र **नेपाली**को मिश्रण हो, जसले प्रत्येकले राज्यको पहिचानमा आफ्नो भाषा, परम्परा र व्यञ्जनको योगदान गर्दछ।",
+                    cultureTwo: "**कला र हस्तशिल्प:** परम्परागत कला रूपहरूमा जटिल थाङ्का चित्रकला, काठको नक्काशी र बुनाई समावेश छ। यी शिल्पहरूले प्रायः बौद्ध देवताहरू र धार्मिक ग्रन्थहरूका दृश्यहरू चित्रण गर्छन्।",
+                    cultureThree: "**व्यञ्जन:** सिक्किमी व्यञ्जन नेपाली र तिब्बती प्रभावहरूको मिश्रण हो। मोमो, थुक्पा र फाग्शापा जस्ता मुख्य परिकारहरू व्यापक रूपमा मन पराइन्छ र यसले स्थानीय सामग्री र हावापानीलाई झल्काउँछ।",
+                    copyrightText: "© २०२५ टीम होराइजन। सर्वाधिकार सुरक्षित।",
+                    hackathonText: "echoes of sikkim",
+                },
+                bhutia: {
+                    websiteTitle: "བྷུ་ཏི་ཡ།",
+                    aboutLink: "བྷུ་ཏི་ཡ།",
+                    featuresLink: "བྷུ་ཏི་ཡ།",
+                    contactLink: "བྷུ་ཏི་ཡ།",
+                    heroTitle: "བྷུ་ཏི་ཡ།",
+                    exploreBtn: "བྷུ་ཏི་ཡ།",
+                    missionTitle: "བྷུ་ཏི་ཡ།",
+                    missionText: "བྷུ་ཏི་ཡ།",
+                    featuresTitle: "བྷུ་ཏི་ཡ།",
+                    cultureTraditionTitle: "བྷུ་ཏི་ཡ།",
+                    cultureTraditionText: "བྷུ་ཏི་ཡ།",
+                    touristPlaceTitle: "བྷུ་ཏི་ཡ།",
+                    touristPlaceText: "བྷུ་ཏི་ཡ།",
+                    roadMapTitle: "བྷུ་ཏི་ཡ།",
+                    roadMapText: "བྷུ་ཏི་ཡ།",
+                    contactTitle: "བྷུ་ཏི་ཡ།",
+                    nameLabel: "བྷུ་ཏི་ཡ།",
+                    emailLabel: "བྷུ་ཏི་ཡ།",
+                    mobileLabel: "བྷུ་ཏི་ཡ།",
+                    reasonLabel: "བྷུ་ཏི་ཡ།",
+                    reasonPlaceholder: "བྷུ་ཏི་ཡ།",
+                    sendMessageBtn: "བྷུ་ཏི་ཡ།",
+                    formSuccessMessage: "བྷུ་ཏི་ཡ།",
+                    exploreTitle: "བྷུ་ཏི་ཡ།",
+                    templesTitle: "བྷུ་ཏི་ཡ།",
+                    templesText: "བྷུ་ཏི་ཡ།",
+                    mountainsTitle: "བྷུ་ཏི་ཡ།",
+                    mountainsText: "བྷུ་ཏི་ཡ།",
+                    riversTitle: "བྷུ་ཏི་ཡ།",
+                    riversText: "བྷུ་ཏི་ཡ།",
+                    natureTitle: "བྷུ་ཏི་ཡ།",
+                    natureText: "བྷུ་ཏི་ཡ།",
+                    cultureModalTitle: "བྷུ་ཏི་ཡ།",
+                    traditionsTitle: "བྷུ་ཏི་ཡ།",
+                    traditionIntro: "བྷུ་ཏི་ཡ།",
+                    traditionOne: "**Chaam Dances:** བྷུ་ཏི་ཡ།",
+                    traditionTwo: "**Lha-soel:** བྷུ་ཏི་ཡ།",
+                    cultureTopicTitle: "བྷུ་ཏི་ཡ།",
+                    cultureIntro: "བྷུ་ཏི་ཡ།",
+                    cultureOne: "**Ethnic Diversity:** བྷུ་ཏི་ཡ།",
+                    cultureTwo: "**Art and Handicrafts:** བྷུ་ཏི་ཡ།",
+                    cultureThree: "**Cuisine:** བྷུ་ཏི་ཡ།",
+                    copyrightText: "བྷུ་ཏི་ཡ།",
+                    hackathonText: "echoes of sikkim",
+                },
+                sikkimese: {
+                    websiteTitle: "སིཀ་ཀིམ་སི།",
+                    aboutLink: "སིཀ་ཀིམ་སི།",
+                    featuresLink: "སིཀ་ཀིམ་སི།",
+                    contactLink: "སིཀ་ཀིམ་སི།",
+                    heroTitle: "སིཀ་ཀིམ་སི།",
+                    exploreBtn: "སིཀ་ཀིམ་སི།",
+                    missionTitle: "སིཀ་ཀིམ་སི།",
+                    missionText: "སིཀ་ཀིམ་སི།",
+                    featuresTitle: "སིཀ་ཀིམ་སི།",
+                    cultureTraditionTitle: "སིཀ་ཀིམ་སི།",
+                    cultureTraditionText: "སིཀ་ཀིམ་སི།",
+                    touristPlaceTitle: "སིཀ་ཀིམ་སི།",
+                    touristPlaceText: "སིཀ་ཀིམ་སི།",
+                    roadMapTitle: "སིཀ་ཀིམ་སི།",
+                    roadMapText: "སིཀ་ཀིམ་སི།",
+                    contactTitle: "སིཀ་ཀིམ་སི།",
+                    nameLabel: "སིཀ་ཀིམ་སི།",
+                    emailLabel: "སིཀ་ཀིམ་སི།",
+                    mobileLabel: "སིཀ་ཀིམ་སི།",
+                    reasonLabel: "སིཀ་ཀིམ་སི།",
+                    reasonPlaceholder: "སིཀ་ཀིམ་སི།",
+                    sendMessageBtn: "སིཀ་ཀིམ་སི།",
+                    formSuccessMessage: "སིཀ་ཀིམ་སི།",
+                    exploreTitle: "སིཀ་ཀིམ་སི།",
+                    templesTitle: "སིཀ་ཀིམ་སི།",
+                    templesText: "སིཀ་ཀིམ་སི།",
+                    mountainsTitle: "སིཀ་ཀིམ་སི།",
+                    mountainsText: "སིཀ་ཀིམ་སི།",
+                    riversTitle: "སིཀ་ཀིམ་སི།",
+                    riversText: "སིཀ་ཀིམ་སི།",
+                    natureTitle: "སིཀ་ཀིམ་སི།",
+                    natureText: "སིཀ་ཀིམ་སི།",
+                    cultureModalTitle: "སིཀ་ཀིམ་སི།",
+                    traditionsTitle: "སིཀ་ཀིམ་སི།",
+                    traditionIntro: "སིཀ་ཀིམ་སི།",
+                    traditionOne: "**Chaam Dances:** སིཀ་ཀིམ་སི།",
+                    traditionTwo: "**Lha-soel:** སིཀ་ཀིམ་སི།",
+                    cultureTopicTitle: "སིཀ་ཀིམ་སི།",
+                    cultureIntro: "སིཀ་ཀིམ་སི།",
+                    cultureOne: "**Ethnic Diversity:** སིཀ་ཀིམ་སི།",
+                    cultureTwo: "**Art and Handicrafts:** སིཀ་ཀིམ་སི།",
+                    cultureThree: "**Cuisine:** སིཀ་ཀིམ་སི།",
+                    copyrightText: "སིཀ་ཀིམ་སི།",
+                    hackathonText: "echoes of sikkim",
+                },
+                lep: {
+                    websiteTitle: "རོང་།",
+                    aboutLink: "རོང་།",
+                    featuresLink: "རོང་།",
+                    contactLink: "རོང་།",
+                    heroTitle: "རོང་།",
+                    exploreBtn: "རོང་།",
+                    missionTitle: "རོང་།",
+                    missionText: "རོང་།",
+                    featuresTitle: "རོང་།",
+                    cultureTraditionTitle: "རོང་།",
+                    cultureTraditionText: "རོང་།",
+                    touristPlaceTitle: "རོང་།",
+                    touristPlaceText: "རོང་།",
+                    roadMapTitle: "རོང་།",
+                    roadMapText: "རོང་།",
+                    contactTitle: "རོང་།",
+                    nameLabel: "རོང་།",
+                    emailLabel: "རོང་།",
+                    mobileLabel: "རོང་།",
+                    reasonLabel: "རོང་།",
+                    reasonPlaceholder: "རོང་།",
+                    sendMessageBtn: "རོང་།",
+                    formSuccessMessage: "རོང་།",
+                    exploreTitle: "རོང་།",
+                    templesTitle: "རོང་།",
+                    templesText: "རོང་།",
+                    mountainsTitle: "རོང་།",
+                    mountainsText: "རོང་།",
+                    riversTitle: "རོང་།",
+                    riversText: "རོང་།",
+                    natureTitle: "རོང་།",
+                    natureText: "རོང་།",
+                    cultureModalTitle: "རོང་།",
+                    traditionsTitle: "རོང་།",
+                    traditionIntro: "རོང་།",
+                    traditionOne: "**Chaam Dances:** རོང་།",
+                    traditionTwo: "**Lha-soel:** རོང་།",
+                    cultureTopicTitle: "རོང་།",
+                    cultureIntro: "རོང་།",
+                    cultureOne: "**Ethnic Diversity:** རོང་།",
+                    cultureTwo: "**Art and Handicrafts:** རོང་།",
+                    cultureThree: "**Cuisine:** རོང་།",
+                    copyrightText: "རོང་།",
+                    hackathonText: "echoes of sikkim",
+                },
+                ta: {
+                    websiteTitle: "சிக்கிமின் எதிரொலிகள்",
+                    aboutLink: "பற்றி",
+                    featuresLink: "அம்சங்கள்",
+                    contactLink: "தொடர்பு",
+                    heroTitle: "பாரம்பரிய பயணம்",
+                    exploreBtn: "ஆராயுங்கள்",
+                    missionTitle: "எங்கள் நோக்கம்",
+                    missionText: "சிக்கிம் 17 ஆம் நூற்றாண்டைச் சேர்ந்த 200 க்கும் மேற்பட்ட மடாலயங்களின் தாயகமாக உள்ளது. இந்த இடங்கள் வழிபாட்டுத் தலங்கள் மட்டுமல்ல, விலைமதிப்பற்ற கலை, பண்டைய கையெழுத்துப் பிரதிகள் மற்றும் செழுமையான கலாச்சார பாரம்பரியத்தின் களஞ்சியங்களும் ஆகும். எங்கள் திட்டம், இந்த தொலைதூர இடங்களுக்கு சுற்றுலாவை மேம்படுத்துவதற்கும், எதிர்கால சந்ததியினருக்காக அவற்றின் நீண்டகால பாதுகாப்பை உறுதி செய்வதற்கும் ஒரு டிஜிட்டல் தளத்தை உருவாக்குவதை நோக்கமாகக் கொண்டுள்ளது. பாரம்பரியம் மற்றும் நவீனத்துவம் ஆகியவற்றுக்கு இடையேயான இடைவெளியைக் குறைக்க தொழில்நுட்பத்தால் முடியும் என்று நாங்கள் நம்புகிறோம்.",
+                    featuresTitle: "முக்கிய அம்சங்கள்",
+                    cultureTraditionTitle: "கலாச்சாரம் மற்றும் பாரம்பரியம்",
+                    cultureTraditionText: "சிக்கிம் மக்களின் பாரம்பரியங்கள், கலைகள் மற்றும் வாழ்க்கை முறையை ஆராயுங்கள்.",
+                    touristPlaceTitle: "சுற்றுலாத் தளம்",
+                    touristPlaceText: "கலாச்சார மற்றும் கல்வி ஆராய்ச்சிக்கு சுவரோவியங்கள், தங்ககாக்கள் மற்றும் பண்டைய கையெழுத்துப் பிரதிகளின் உயர்-தெளிவுத்திறன் கொண்ட படங்களின் களஞ்சியத்தை அணுகவும்.",
+                    roadMapTitle: "சாலை வரைபட வழிகாட்டி",
+                    roadMapText: "கேங்டாக்கில் அருகிலுள்ள ஹோட்டல்கள் மற்றும் உணவகங்களைக் கண்டறியவும்.",
+                    contactTitle: "தொடர்பில் இருங்கள்",
+                    nameLabel: "பெயர்",
+                    emailLabel: "மின்னஞ்சல்",
+                    mobileLabel: "கைபேசி எண்",
+                    reasonLabel: "காரணம்",
+                    reasonPlaceholder: "உங்கள் காரணத்தை இங்கே உள்ளிடவும்...",
+                    sendMessageBtn: "செய்தியை அனுப்பு",
+                    formSuccessMessage: "உங்கள் காரணத்திற்கு நன்றி! விரைவில் உங்களைத் தொடர்புகொள்வோம்.",
+                    exploreTitle: "சுற்றுலாத் தலங்களை ஆராயுங்கள்",
+                    templesTitle: "கோவில்கள்",
+                    templesText: "ஆன்மீக தலங்கள் மற்றும் புனித இடங்களைக் கண்டறியவும்",
+                    mountainsTitle: "மலைகள் மற்றும் குன்றுகள்",
+                    mountainsText: "மலையேற்ற இடங்கள் மற்றும் ரம்மியமான காட்சிகளைக் கண்டறியவும்",
+                    riversTitle: "நதிகள்",
+                    riversText: "அமைதியான நதிகள் மற்றும் நீர்நிலைகளை ஆராயுங்கள்",
+                    natureTitle: "இயற்கை",
+                    natureText: "காடுகள், நீர்வீழ்ச்சிகள் மற்றும் இயற்கை பூங்காக்களைக் கண்டறியவும்",
+                    cultureModalTitle: "கலாச்சாரம் மற்றும் பாரம்பரியம்",
+                    traditionsTitle: "சிக்கிமின் பாரம்பரியங்கள்",
+                    traditionIntro: "சிக்கிம் பாரம்பரியங்கள் பௌத்த கொள்கைகளில் ஆழமாக வேரூன்றியுள்ளன, இயற்கை மற்றும் ஆன்மீகம் ஆகிய இரண்டையும் மதிக்கின்றன.",
+                    traditionOne: "**சாம் நடனங்கள்:** மிகவும் துடிப்பான பாரம்பரியமான, இந்த முகமூடி நடனங்கள் திருவிழாக்களின் போது லாமாக்களால் நிகழ்த்தப்படுகின்றன. அவை ஒழுக்க நாடகங்களையும் நன்மை தீமையின் மீது வெற்றியையும் சித்தரிக்கின்றன.",
+                    traditionTwo: "**ல்ஹா-சோயல்:** இந்த பாரம்பரியம் காஞ்சன்ஜங்கா மலையை ஒரு புனித பாதுகாவலர் தெய்வமாக வணங்குவதை உள்ளடக்கியது. பாங் ல்ஹாப்சோல் போன்ற திருவிழாக்கள் மலைக்கு அஞ்சலி செலுத்துவதற்கும் அதன் ஆசீர்வாதங்களைப் பெறுவதற்கும் கொண்டாடப்படுகின்றன.",
+                    cultureTopicTitle: "சிக்கிமின் கலாச்சாரம்",
+                    cultureIntro: "சிக்கிமின் கலாச்சாரம் அதன் பழங்குடி சமூகங்கள் மற்றும் அண்டை பிராந்தியங்களின் அழகான கலவையாகும், இது ஒரு தனித்துவமான மற்றும் இணக்கமான சமூகத்தை உருவாக்குகிறது.",
+                    cultureOne: "**இன வேறுபாடு:** கலாச்சாரம் முதன்மையாக பழங்குடி **லெப்சா** மக்கள், திபெத்திய வம்சாவளியைச் சேர்ந்த **பூட்டியாக்கள்** மற்றும் **நேபாளிகள்** ஆகியோரின் கலவையாகும், இதில் ஒவ்வொருவரும் தங்கள் சொந்த மொழி, பாரம்பரியங்கள் மற்றும் உணவு வகைகளை மாநிலத்தின் அடையாளத்திற்கு பங்களிக்கின்றனர்.",
+                    cultureTwo: "**கலை மற்றும் கைவினைப்பொருட்கள்:** பாரம்பரிய கலை வடிவங்களில் சிக்கலான தங்ககா ஓவியம், மர செதுக்குதல் மற்றும் நெசவு ஆகியவை அடங்கும். இந்த கைவினைப்பொருட்கள் பெரும்பாலும் பௌத்த தெய்வங்களையும் மத நூல்களின் காட்சிகளையும் சித்தரிக்கின்றன.",
+                    cultureThree: "**உணவு:** சிக்கிம் உணவு நேபாள மற்றும் திபெத்திய தாக்கங்களின் கலவையாகும். மோமோ, துக்பா மற்றும் பாக்ஷாபா போன்ற பிரதான உணவுகள் பரவலாக அனுபவிக்கப்படுகின்றன மற்றும் உள்ளூர் பொருட்கள் மற்றும் காலநிலையை பிரதிபலிக்கின்றன.",
+                    copyrightText: "© 2025 டீம் ஹொரைசன். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+                    hackathonText: "echoes of sikkim",
+                }
+            };
+
+            const languageSelector = document.getElementById('language-selector');
+
+            function changeLanguage(lang) {
+                const elements = document.querySelectorAll('[data-lang-key]');
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        if (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT') {
+                            el.placeholder = translations[lang][key];
+                        } else {
+                            el.innerHTML = translations[lang][key];
+                        }
+                    }
+                });
+            }
+
+            languageSelector.addEventListener('change', (event) => {
+                changeLanguage(event.target.value);
+            });
+
+            // Set default language on page load
+            document.addEventListener('DOMContentLoaded', () => {
+                const userLang = navigator.language.substring(0, 2);
+                if (translations[userLang]) {
+                    languageSelector.value = userLang;
+                    changeLanguage(userLang);
+                } else {
+                    changeLanguage('en');
+                }
+            });
+
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const formMessage = document.getElementById('formMessage');
+                const currentLang = languageSelector.value;
+                formMessage.textContent = translations[currentLang].formSuccessMessage;
+                formMessage.classList.remove('hidden');
+                formMessage.classList.add('text-green-600');
+
+                // Clear the form fields
+                event.target.reset();
+            });
+
+            document.getElementById('mobile').addEventListener('input', function(event) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+
+            const categoryModal = document.getElementById('categoryModal');
+            const galleryModal = document.getElementById('galleryModal');
+            const cultureModal = document.getElementById('cultureModal');
+            const roadmapModal = document.getElementById('roadmapModal');
+            const closeCategoryModal = document.getElementById('closeCategoryModal');
+            const closeGalleryModal = document.getElementById('closeGalleryModal');
+            const closeCultureModal = document.getElementById('closeCultureModal');
+            const closeRoadmapModal = document.getElementById('closeRoadmapModal');
+            const backToCategories = document.getElementById('backToCategories');
+            const backToMain = document.getElementById('backToMain');
+            const backFromCulture = document.getElementById('backFromCulture');
+            const backFromRoadmap = document.getElementById('backFromRoadmap');
+            const galleryTitle = document.getElementById('galleryTitle');
+            const imageGallery = document.getElementById('imageGallery');
+            const roadmapGuideCard = document.getElementById('roadmapGuideCard');
+            const touristPlaceCard = document.getElementById('touristPlaceCard');
+            const cultureCard = document.getElementById('cultureCard');
+            const exploreBtn = document.querySelector('[data-lang-key="exploreBtn"]');
+            const locationSelect = document.getElementById("locationSelect");
+            const locationMap = document.getElementById("locationMap");
+            // const cultureModal =document.getElementById("cultureModal");
+            const galleries = {
+                "Temples": [{
+                    name: "Rumtek Monastery",
+                    location: "Dharma Chakra Centre",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Rumtek_Monastery%2C_Sikkim.jpg/1280px-Rumtek_Monastery%2C_Sikkim.jpg"
+                }, {
+                    name: "Pemayangtse Monastery",
+                    location: "Pelling, West Sikkim",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Pemayangtse_Monastery_2.jpg/1280px-Pemayangtse_Monastery_2.jpg"
+                }, {
+                    name: "Dubdi Monastery",
+                    location: "Yuksom, West Sikkim",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Dubdi_Monastery%2C_Yuksom%2C_Sikkim.jpg/1280px-Dubdi_Monastery%2C_Yuksom%2C_Sikkim.jpg"
+                }, {
+                    name: "Enchey Monastery",
+                    location: "Gangtok",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Enchey_Monastery_with_Gangtok_Town_in_background.jpg/1280px-Enchey_Monastery_with_Gangtok_Town_in_background.jpg"
+                }],
+                "Mountains & Hills": [{
+                    name: "Kanchenjunga",
+                    location: "The Himalayas",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Kangchenjunga_from_Pelling%2C_West_Sikkim_by_Dinesh_Mainali.jpg/1280px-Kangchenjunga_from_Pelling%2C_West_Sikkim_by_Dinesh_Mainali.jpg"
+                }, {
+                    name: "Tsomgo Lake",
+                    location: "East Sikkim",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Lake_Tsomgo%2C_Sikkim.jpg/1280px-Lake_Tsomgo%2C_Sikkim.jpg"
+                }, {
+                    name: "Samdruptse",
+                    location: "Namchi",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Samdruptse_hill.jpg/1280px-Samdruptse_hill.jpg"
+                }],
+                "Rivers": [{
+                    name: "Teesta River",
+                    location: "Sikkim",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/River_Teesta_at_Singtam%2C_East_Sikkim.jpg/1280px-River_Teesta_at_Singtam%2C_East_Sikkim.jpg"
+                }, {
+                    name: "Rangeet River",
+                    location: "West Sikkim",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/River_Rangeet.jpg/1280px-River_Rangeet.jpg"
+                }],
+                "Nature": [{
+                    name: "Khangchendzonga National Park",
+                    location: "North Sikkim",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Khangchendzonga_National_Park%2C_Sikkim.jpg/1280px-Khangchendzonga_National_Park%2C_Sikkim.jpg"
+                }, {
+                    name: "Yuksom",
+                    location: "West Sikkim",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Yuksom_-_A_historical_village_in_Sikkim.jpg/1280px-Yuksom_-_A_historical_village_in_Sikkim.jpg"
+                }, {
+                    name: "Yumthang Valley",
+                    location: "North Sikkim",
+                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Yumthang_Valley.jpg/1280px-Yumthang_Valley.jpg"
+                }]
+            };
+
+            function renderGallery(category) {
+                imageGallery.innerHTML = '';
+                const places = galleries[category];
+                galleryTitle.textContent = category;
+                places.forEach(place => {
+                    const card = document.createElement('div');
+                    card.className = 'gallery-card text-white flex flex-col items-center';
+
+                    const img = document.createElement('img');
+                    img.src = place.url;
+                    img.alt = place.name;
+                    img.className = 'w-full h-auto mb-4 rounded-lg';
+
+                    const title = document.createElement('h4');
+                    title.className = 'text-xl font-bold text-gray-200 mb-1';
+                    title.textContent = place.name;
+
+                    const location = document.createElement('p');
+                    location.className = 'text-gray-400 text-sm';
+                    location.textContent = place.location;
+
+                    card.appendChild(img);
+                    card.appendChild(title);
+                    card.appendChild(location);
+                    imageGallery.appendChild(card);
+                });
+            }
+
+            touristPlaceCard.addEventListener('click', function() {
+                categoryModal.style.display = 'block';
+            });
+
+            cultureCard.addEventListener('click', function() {
+                cultureModal.style.display = 'block';
+            });
+
+            // document.getElementById('cultureCard').addEventListener('click', function() {
+            //     cultureModal.style.display = 'block';
+            // });
+
+
+            roadmapGuideCard.addEventListener('click', function() {
+                roadmapModal.style.display = 'block';
+            });
+
+            exploreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('features').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+
+            closeRoadmapModal.addEventListener('click', function() {
+                roadmapModal.style.display = 'none';
+            });
+            cultureModal.addEventListener('click', function() {
+
+                cultureModal.style.display = 'none';
+
+            });
+
+            closeCategoryModal.addEventListener('click', function() {
+                categoryModal.style.display = 'none';
+            });
+
+            closeGalleryModal.addEventListener('click', function() {
+                galleryModal.style.display = 'none';
+            });
+
+            closeCultureModal.addEventListener('click', function() {
+                cultureModal.style.display = 'none';
+            });
+
+            backToMain.addEventListener('click', function() {
+                categoryModal.style.display = 'none';
+            });
+
+            backToCategories.addEventListener('click', function() {
+                galleryModal.style.display = 'none';
+                categoryModal.style.display = 'block';
+            });
+
+            backFromCulture.addEventListener('click', function() {
+                cultureModal.style.display = 'none';
+            });
+
+            backFromRoadmap.addEventListener('click', function() {
+                roadmapModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == categoryModal) {
+                    categoryModal.style.display = 'none';
+                }
+                if (event.target == galleryModal) {
+                    galleryModal.style.display = 'none';
+                }
+                if (event.target == cultureModal) {
+                    cultureModal.style.display = 'none';
+                }
+                if (event.target == roadmapModal) {
+                    roadmapModal.style.display = 'none';
+                }
+            });
+
+            document.querySelectorAll('.template-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    categoryModal.style.display = 'none';
+                    renderGallery(category);
+                    galleryModal.style.display = 'block';
+                });
+            });
+
+            if (locationSelect) {
+                locationSelect.addEventListener("change", function() {
+                    locationMap.src = this.value;
+                });
+            }
+        </script>
+</body>
+
+</html>
