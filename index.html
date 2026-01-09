@@ -17,6 +17,7 @@
             background-image: url('https://images.unsplash.com/photo-1617469165786-8007eda3caa7?q=80&w=2940&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
+            height: 100vh;
             position: relative;
             z-index: 1;
         }
@@ -55,7 +56,7 @@
             height: 100%;
             overflow: auto;
             background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(255, 255, 255, 0.85);
         }
         
         .modal-content {
@@ -129,10 +130,11 @@
     <header class="bg-white shadow-md">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <img src="ES.zip/1.jpg" alt="Echoes of Sikkim Logo" class="h-8 w-8">
-                <a href="#" class="text-xl font-bold text-gray-900" data-lang-key="websiteTitle">Echoes of Sikkim</a>
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F24836939e6b24d848d6ebdf94ea0970a%2F07f66e17999847c197e22232a2ff27c5?format=webp&width=800" alt="Zedong logo" class="h-10 w-20">
+
             </div>
             <ul class="flex space-x-6 text-gray-600 font-medium items-center">
+                <li><a href="#" class="hover:text-indigo-600" data-lang-key="homeLink">Home</a></li>
                 <li><a href="#about" class="hover:text-indigo-600" data-lang-key="aboutLink">About</a></li>
                 <li><a href="#features" class="hover:text-indigo-600" data-lang-key="featuresLink">Features</a></li>
                 <li><a href="#contact" class="hover:text-indigo-600" data-lang-key="contactLink">feedback</a></li>
@@ -147,12 +149,17 @@
                         <option value="ta">தமிழ்</option>
                     </select>
                 </li>
+                <li>
+                    <button id="mapIconBtn" class="ml-2 rounded-full bg-gray-200 p-1" aria-label="Open Sikkim Road Map">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F24836939e6b24d848d6ebdf94ea0970a%2F3831f3f4f5ea482aaacf8b0897da4176?format=webp&width=800" alt="Map icon" class="h-6 w-6">
+                    </button>
+                </li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <div class="hero-bg flex items-center justify-center text-center py-20 px-4 sm:py-32">
+    <div id="hero" class="hero-bg flex items-center justify-center text-center py-20 px-4 sm:py-32">
         <div class="max-w-4xl mx-auto text-white">
             <h1 class="text-6xl font-extrabold leading-tight mb-4">
                 <span class="text-white" data-lang-key="heroTitle1">Heritage </span>
@@ -166,7 +173,7 @@
     </div>
 
     <!-- About Section -->
-    <section id="about" class="py-16 px-4">
+    <section id="about" class="py-16 px-4 hidden">
         <div class="container mx-auto max-w-4xl">
             <h2 class="text-3xl font-bold mb-8 text-center section-heading" data-lang-key="missionTitle">Our Mission</h2>
             <div class="bg-white rounded-xl shadow-lg p-8">
@@ -179,7 +186,7 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-16 bg-gray-50 px-4">
+    <section id="features" class="py-16 bg-gray-50 px-4 hidden">
         <div class="container mx-auto max-w-6xl">
             <h2 class="text-3xl font-bold mb-12 text-center section-heading" data-lang-key="featuresTitle">Key Features</h2>
             <div class="flex flex-col space-y-8">
@@ -218,9 +225,9 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 px-4">
+    <section id="contact" class="py-16 px-4 hidden">
         <div class="container mx-auto max-w-2xl">
-            <h2 class="text-3xl font-bold mb-8 text-center section-heading" data-lang-key="contactTitle">Get in Touch</h2>
+            <h2 class="text-3xl font-bold mb-8 text-center section-heading" data-lang-key="contactTitle">Feedback</h2>
             <div class="bg-white rounded-xl shadow-lg p-8">
                 <form id="contactForm">
                     <div class="mb-6">
@@ -236,7 +243,7 @@
                         <input type="tel" id="mobile" name="mobile" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required pattern="[0-9]{10}" maxlength="10" title="Please enter a 10-digit mobile number.">
                     </div>
                     <div class="mb-6">
-                        <label for="message" class="block text-gray-700 font-semibold mb-2" data-lang-key="reasonLabel">Reason</label>
+                        <label for="message" class="block text-gray-700 font-semibold mb-2" data-lang-key="reasonLabel">Feedback</label>
                         <textarea id="message" name="message" rows="4" placeholder="Enter your reason here..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required data-lang-key="reasonPlaceholder"></textarea>
                     </div>
                     <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-300" data-lang-key="sendMessageBtn">Send Message</button>
@@ -275,7 +282,7 @@
                 </div>
             </div>
         </div>
-        </section>
+        </div>
 
         <!-- Modal for Gallery -->
         <div id="galleryModal" class="modal">
@@ -424,7 +431,7 @@
         <footer class="bg-gray-800 text-white py-6 mt-16">
             <div class="container mx-auto text-center text-sm">
                 <p data-lang-key="copyrightText">&copy; 2025 Team Horizon. All rights reserved.</p>
-                <p class="mt-2" data-lang-key="hackathonText">@ 2025 echoes of sikkim</p>
+                <p class="mt-2" data-lang-key="hackathonText">@ 2025 zedong </p>
             </div>
         </footer>
 
@@ -432,9 +439,10 @@
             const translations = {
                 en: {
                     websiteTitle: "Echoes of Sikkim",
+                    homeLink: "Home",
                     aboutLink: "About",
                     featuresLink: "Features",
-                    contactLink: "Contact",
+                    contactLink: "feedback",
                     heroTitle: "Heritage Journey",
                     exploreBtn: "Explore",
                     missionTitle: "Our Mission",
@@ -446,11 +454,11 @@
                     touristPlaceText: "Access a repository of high-resolution images of murals, Thangkas, and ancient manuscripts for cultural and academic research.",
                     roadMapTitle: "Road Map Guide",
                     roadMapText: "Find nearby hotels and restaurants in Gangtok.",
-                    contactTitle: "Get in Touch",
+                    contactTitle: "Feedback",
                     nameLabel: "Name",
                     emailLabel: "Email",
                     mobileLabel: "Mobile Number",
-                    reasonLabel: "Reason",
+                    reasonLabel: "Feedback",
                     reasonPlaceholder: "Enter your reason here...",
                     sendMessageBtn: "Send Message",
                     formSuccessMessage: "Thank you for your reason! We will get back to you shortly.",
@@ -479,13 +487,14 @@
                 },
                 hi: {
                     websiteTitle: "सिक्किम की गूंज",
+                    homeLink: "मुखपृष्ठ",
                     aboutLink: "के बारे में",
                     featuresLink: "विशेषताएँ",
                     contactLink: "संपर्क करें",
                     heroTitle: "विरासत यात्रा",
                     exploreBtn: "अन्वेषण करें",
                     missionTitle: "हमारा मिशन",
-                    missionText: "सिक्किम 200 से अधिक मठों का घर है, जिनमें से कुछ 17वीं शताब्दी के हैं। ये स्थल सिर्फ पूजा के स्थान नहीं हैं, बल्कि अमूल्य कला, प्राचीन पांडुलिपियों और समृद्ध सांस्कृतिक विरासत के भंडार भी हैं। हमारा प्रोजेक्ट इन दूरस्थ स्थानों में पर्यटन को बढ़ावा देने के लिए एक डिजिटल प्लेटफॉर्म बनाना है, साथ ही भविष्य की पीढ़ियों के लिए उनके दीर्घकालिक संरक्षण को सुनिश्चित करना है। हमारा मानना है कि प्रौद्योगिकी परंपरा और आधुनिकता के बीच के अंतर को पाट सकती है।",
+                    missionText: "सिक्किम 200 से अधिक मठों का घर है, जिनमें से कुछ 17वीं शताब्दी के हैं। ये स्थल सिर्फ पूजा के स्थान नहीं हैं, बल्कि अमूल्य कला, प्राचीन पांडुलिपियों और समृद्ध सांस्कृतिक विरासत के भंडार भी हैं। हमारा प्रोजेक��ट इन दूरस्थ स्थानों में पर्यटन को बढ़ावा देने के लिए एक डिजिटल प्लेटफॉर्म बनाना है, साथ ही भविष्य की पीढ़ियों के लिए उनके दीर्घकालिक संरक्षण को सुनिश्चित करना है। हमारा मानना है कि प्रौद्योगिकी परंपरा और आधुनिकता के बीच के अंतर को पाट सकती है।",
                     featuresTitle: "प्रमुख विशेषताएँ",
                     cultureTraditionTitle: "संस्कृति और परंपरा",
                     cultureTraditionText: "सिक्किम के लोगों की परंपराओं, कलाओं और जीवन शैली का अन्वेषण करें।",
@@ -497,7 +506,7 @@
                     nameLabel: "नाम",
                     emailLabel: "ईमेल",
                     mobileLabel: "मोबाइल नंबर",
-                    reasonLabel: "कारण",
+                    reasonLabel: "प्रतिक्रिया",
                     reasonPlaceholder: "अपना कारण यहाँ दर्ज करें...",
                     sendMessageBtn: "संदेश भेजें",
                     formSuccessMessage: "आपके कारण के लिए धन्यवाद! हम जल्द ही आपसे संपर्क करेंगे।",
@@ -514,42 +523,43 @@
                     traditionsTitle: "सिक्किम में परंपराएँ",
                     traditionIntro: "सिक्किम की परंपराएँ प्रकृति और आध्यात्मिकता दोनों का सम्मान करते हुए बौद्ध सिद्धांतों में गहराई से निहित हैं।",
                     traditionOne: "**छाम नृत्य:** सबसे जीवंत परंपरा, ये नकाबपोश नृत्य त्योहारों के दौरान लामाओं द्वारा किए जाते हैं। वे नैतिकता के नाटकों और बुराई पर अच्छाई की जीत को दर्शाते हैं।",
-                    traditionTwo: "**ल्हा-सोएल:** इस परंपरा में माउंट कंचनजंगा को एक पवित्र संरक्षक देवता के रूप में पूजा जाता है। पहाड़ को श्रद्धांजलि अर्पित करने और उसका आशीर्वाद प्राप्त करने के लिए पैंग ल्हाबसोल जैसे त्योहार मनाए जाते हैं।",
+                    traditionTwo: "**ल्हा-सोएल:** इस परंपरा में माउंट कं��नजंगा को एक पवित्र संरक्षक देवता के रूप में पूजा जाता है। पहाड़ को श्रद्धांजलि अर्पित करने और उसका आशीर्वाद प्राप्त करने के लिए पैंग ल्हाबसोल जैसे त्योहार मनाए जाते हैं।",
                     cultureTopicTitle: "सिक्किम की संस्कृति",
                     cultureIntro: "सिक्किम की संस्कृति अपनी स्वदेशी समुदायों और पड़ोसी क्षेत्रों का एक सुंदर मिश्रण है, जो एक अद्वितीय और सामंजस्यपूर्ण समाज का निर्माण करती है।",
                     cultureOne: "**जातीय विविधता:** संस्कृति मुख्य रूप से स्वदेशी **लेपचा** लोगों, तिब्बती मूल के **भूटिया**, और **नेपाली** का मिश्रण है, जिनमें से प्रत्येक ने राज्य की पहचान में अपनी भाषा, परंपरा और व्यंजन का योगदान दिया है।",
                     cultureTwo: "**कला और हस्तशिल्प:** पारंपरिक कला रूपों में जटिल थंगका पेंटिंग, लकड़ी की नक्काशी और बुनाई शामिल हैं। ये शिल्प अक्सर बौद्ध देवताओं और धार्मिक ग्रंथों के दृश्यों को दर्शाते हैं।",
-                    cultureThree: "**व्यंजन:** सिक्किम के व्यंजन नेपाली और तिब्बती प्रभावों का मिश्रण हैं। मोमो, थुक्पा और फागशपा जैसे मुख्य व्यंजन व्यापक रूप से पसंद किए जाते हैं और स्थानीय सामग्री और जलवायु को दर्शाते हैं।",
-                    copyrightText: "© 2025 टीम होराइजन। सर्वाधिकार सुरक्षित।",
+                    cultureThree: "**व्यंजन:** सिक्किम ��े व्यंजन नेपाली और तिब्बती प्रभावों का मिश्रण हैं। मोमो, थुक्पा और फागशपा जैसे मुख्य व्यंजन व्यापक रूप से पसंद किए जाते हैं और स्थानीय सामग्री और जलवायु को दर्शाते हैं।",
+                    copyrightText: "© 2025 टीम होराइजन। सर्वाधिकार सुरक्���ित।",
                     hackathonText: "echoes of sikkim",
                 },
                 ne: {
                     websiteTitle: "सिक्किमका प्रतिध्वनि",
+                    homeLink: "गृह",
                     aboutLink: "बारेमा",
                     featuresLink: "विशेषताहरू",
                     contactLink: "सम्पर्क",
                     heroTitle: "विरासत यात्रा",
                     exploreBtn: "अन्वेषण गर्नुहोस्",
                     missionTitle: "हाम्रो मिशन",
-                    missionText: "सिक्किम २०० भन्दा बढी मठहरूको घर हो, जसमध्ये केही १७ औं शताब्दीका हुन्। यी ठाउँहरू पूजास्थल मात्र नभई अमूल्य कला, प्राचीन पाण्डुलिपिहरू र समृद्ध सांस्कृतिक विरासतका भण्डार पनि हुन्। हाम्रो परियोजनाले यी दुर्गम स्थानहरूमा पर्यटनलाई प्रवर्द्धन गर्न एउटा डिजिटल प्लेटफर्म सिर्जना गर्ने लक्ष्य राखेको छ, साथै भविष्यका पुस्ताका लागि तिनीहरूको दीर्घकालीन संरक्षण सुनिश्चित गर्ने। हामी विश्वास गर्छौं कि प्रविधिले परम्परा र आधुनिकताबीचको खाडललाई पुर्न सक्छ।",
+                    missionText: "सिक्किम २०��� भन्दा बढी मठहरूको घर हो, जसमध्ये केही १७ औं शताब्दीका हुन्। यी ठाउँहरू पूजास्थल मात्र नभई अमूल्य कला, प्राचीन पाण्डुलिपिहरू र समृद्ध सांस्कृतिक विरासतका भण्डार पनि हुन्। हाम्रो परियोजनाल��� यी दुर्गम स्थानहरूमा पर्यटनलाई प्रवर्द्धन गर्न एउटा डिजिटल प्लेटफर्म सिर्जना गर्ने लक्ष्य राखेको छ, साथै भविष्यका पुस्ताका लागि तिनीहरूको दीर्घकालीन संरक्षण सुनिश्चित गर्ने। हामी विश्वास गर्छौं कि प्रविधिले परम्परा र आधुनिकताबीचको खाडललाई पुर्न सक्छ।",
                     featuresTitle: "मुख्य विशेषताहरू",
-                    cultureTraditionTitle: "संस्कृति र परम्परा",
+                    cultureTraditionTitle: "संस��कृति र परम्परा",
                     cultureTraditionText: "सिक्किमे मानिसहरूको परम्परा, कला र जीवनशैलीको अन्वेषण गर्नुहोस्।",
                     touristPlaceTitle: "पर्यटक स्थल",
-                    touristPlaceText: "सांस्कृतिक र शैक्षिक अनुसन्धानका लागि भित्तिचित्र, थाङ्का र प्राचीन पाण्डुलिपिहरूको उच्च-रिजोल्युसन छविहरूको भण्डारमा पहुँच गर्नुहोस्।",
+                    touristPlaceText: "सांस्कृतिक र शैक्षिक अनुसन्धानका लागि भित्तिचित्र, थाङ्का र प्रा��ीन पाण्डुलिपिहरूको उच्च-रिजोल्युसन छविहरूको भण्डारमा पहुँच गर्नुहोस्।",
                     roadMapTitle: "सडक नक्सा गाइड",
                     roadMapText: "गान्तोकमा नजिकका होटल र रेस्टुरेन्टहरू फेला पार्नुहोस्।",
                     contactTitle: "सम्पर्कमा आउनुहोस्",
                     nameLabel: "नाम",
                     emailLabel: "ईमेल",
                     mobileLabel: "मोबाइल नम्बर",
-                    reasonLabel: "कारण",
+                    reasonLabel: "प्रतिक्रिया",
                     reasonPlaceholder: "आफ्नो कारण यहाँ प्रविष्ट गर्नुहोस्...",
                     sendMessageBtn: "सन्देश पठाउनुहोस्",
                     formSuccessMessage: "तपाईंको कारणको लागि धन्यवाद! हामी चाँडै नै तपाईंसँग सम्पर्क गर्नेछौं।",
                     exploreTitle: "पर्यटक स्थलहरू अन्वेषण गर्नुहोस्",
                     templesTitle: "मन्दिरहरू",
-                    templesText: "आध्यात्मिक स्थलहरू र पवित्र स्थानहरू फेला पार्नुहोस्",
+                    templesText: "आध्यात���मिक स्थलहरू र पवित्र स्थानहरू फेला पार्नुहोस्",
                     mountainsTitle: "पहाड र डाँडाहरू",
                     mountainsText: "ट्रेकिङ स्थलहरू र सुन्दर दृश्यहरू खोज्नुहोस्",
                     riversTitle: "नदीहरू",
@@ -558,19 +568,20 @@
                     natureText: "जंगल, झरना र प्रकृति पार्कहरू फेला पार्नुहोस्",
                     cultureModalTitle: "संस्कृति र परम्परा",
                     traditionsTitle: "सिक्किममा परम्पराहरू",
-                    traditionIntro: "सिक्किमी परम्पराहरू प्रकृति र आध्यात्मिकता दुवैलाई सम्मान गर्दै बौद्ध सिद्धान्तहरूमा गहिरो रूपमा निहित छन्।",
+                    traditionIntro: "सिक्कि��ी परम्पराहरू प्रकृति र आध्यात्मिकता दुवैलाई सम्मान गर्दै बौद्ध सिद्धान्तहरूमा गहिरो रूपमा निहित छन्।",
                     traditionOne: "**छाम नृत्य:** सबैभन्दा जीवन्त परम्परा, यी नकाबपोश नृत्यहरू चाडपर्वहरूमा लामाहरूद्वारा गरिन्छ। तिनीहरू नैतिकताका नाटकहरू र दुष्टमाथि असलको विजय चित्रण गर्छन्।",
                     traditionTwo: "**ल्हा-सोएल:** यो परम्परामा कञ्चनजङ्घा पर्वतलाई पवित्र संरक्षक देवताको रूपमा पूजा गरिन्छ। पहाडलाई श्रद्धाञ्जली अर्पण गर्न र यसको आशीर्वाद खोज्न पाङ् ल्ह्याबसोल जस्ता चाडपर्वहरू मनाइन्छ।",
-                    cultureTopicTitle: "सिक्किमको संस्कृति",
-                    cultureIntro: "सिक्किमको संस्कृति यसको आदिवासी समुदाय र छिमेकी क्षेत्रहरूको सुन्दर मिश्रण हो, जसले एक अद्वितीय र सामंजस्यपूर्ण समाज सिर्जना गर्दछ।",
+                    cultureTopicTitle: "सिक्क���मको संस्कृति",
+                    cultureIntro: "सिक्किमको संस्कृति यसको आदिवासी समुदाय र छिमेकी क्षेत्रहरू��ो सुन्दर मिश्रण हो, जसले एक अद्वितीय र सामंजस्यपूर्ण समाज सिर्जना गर्दछ।",
                     cultureOne: "**जातीय विविधता:** संस्कृति मुख्यतया आदिवासी **लेप्चा** मानिसहरू, तिब्बती मूलका **भुटिया** र **नेपाली**को मिश्रण हो, जसले प्रत्येकले राज्यको पहिचानमा आफ्नो भाषा, परम्परा र व्यञ्जनको योगदान गर्दछ।",
                     cultureTwo: "**कला र हस्तशिल्प:** परम्परागत कला रूपहरूमा जटिल थाङ्का चित्रकला, काठको नक्काशी र बुनाई समावेश छ। यी शिल्पहरूले प्रायः बौद्ध देवताहरू र धार्मिक ग्रन्थहरूका दृश्यहरू चित्रण गर्छन्।",
-                    cultureThree: "**व्यञ्जन:** सिक्किमी व्यञ्जन नेपाली र तिब्बती प्रभावहरूको मिश्रण हो। मोमो, थुक्पा र फाग्शापा जस्ता मुख्य परिकारहरू व्यापक रूपमा मन पराइन्छ र यसले स्थानीय सामग्री र हावापानीलाई झल्काउँछ।",
+                    cultureThree: "**व्यञ्���न:** सिक्किम�� व्यञ्जन नेपाली र तिब्बती प्रभावहरूको मिश्रण हो। मोमो, थुक्पा र फाग्शापा जस्ता मुख्य परिकारहरू व्यापक रूपमा मन पराइन्छ र यसले स्थानीय सामग्री र हावापानीलाई झल्काउँछ।",
                     copyrightText: "© २०२५ टीम होराइजन। सर्वाधिकार सुरक्षित।",
                     hackathonText: "echoes of sikkim",
                 },
                 bhutia: {
-                    websiteTitle: "བྷུ་ཏི་ཡ།",
+                    websiteTitle: "བྷུ་ཏ���་ཡ།",
+                    homeLink: "བྷུ་ཏི་ཡ།",
                     aboutLink: "བྷུ་ཏི་ཡ།",
                     featuresLink: "བྷུ་ཏི་ཡ།",
                     contactLink: "བྷུ་ཏི་ཡ།",
@@ -617,6 +628,7 @@
                 },
                 sikkimese: {
                     websiteTitle: "སིཀ་ཀིམ་སི།",
+                    homeLink: "སིཀ་ཀིམ་སི།",
                     aboutLink: "སིཀ་ཀིམ་སི།",
                     featuresLink: "སིཀ་ཀིམ་སི།",
                     contactLink: "སིཀ་ཀིམ་སི།",
@@ -632,7 +644,7 @@
                     roadMapTitle: "སིཀ་ཀིམ་སི།",
                     roadMapText: "སིཀ་ཀིམ་སི།",
                     contactTitle: "སིཀ་ཀིམ་སི།",
-                    nameLabel: "སིཀ་ཀིམ་སི།",
+                    nameLabel: "སིཀ་ཀིམ���སི།",
                     emailLabel: "སིཀ་ཀིམ་སི།",
                     mobileLabel: "སིཀ་ཀིམ་སི།",
                     reasonLabel: "སིཀ་ཀིམ་སི།",
@@ -642,7 +654,7 @@
                     exploreTitle: "སིཀ་ཀིམ་སི།",
                     templesTitle: "སིཀ་ཀིམ་སི།",
                     templesText: "སིཀ་ཀིམ་སི།",
-                    mountainsTitle: "སིཀ་ཀིམ་སི།",
+                    mountainsTitle: "སིཀ་ཀིམ་���ི།",
                     mountainsText: "སིཀ་ཀིམ་སི།",
                     riversTitle: "སིཀ་ཀིམ་སི།",
                     riversText: "སིཀ་ཀིམ་སི།",
@@ -663,6 +675,7 @@
                 },
                 lep: {
                     websiteTitle: "རོང་།",
+                    homeLink: "རོང་།",
                     aboutLink: "རོང་།",
                     featuresLink: "རོང་།",
                     contactLink: "རོང་།",
@@ -709,48 +722,49 @@
                 },
                 ta: {
                     websiteTitle: "சிக்கிமின் எதிரொலிகள்",
+                    homeLink: "முகப்பு",
                     aboutLink: "பற்றி",
                     featuresLink: "அம்சங்கள்",
                     contactLink: "தொடர்பு",
-                    heroTitle: "பாரம்பரிய பயணம்",
+                    heroTitle: "பாரம���பரிய பயணம்",
                     exploreBtn: "ஆராயுங்கள்",
                     missionTitle: "எங்கள் நோக்கம்",
-                    missionText: "சிக்கிம் 17 ஆம் நூற்றாண்டைச் சேர்ந்த 200 க்கும் மேற்பட்ட மடாலயங்களின் தாயகமாக உள்ளது. இந்த இடங்கள் வழிபாட்டுத் தலங்கள் மட்டுமல்ல, விலைமதிப்பற்ற கலை, பண்டைய கையெழுத்துப் பிரதிகள் மற்றும் செழுமையான கலாச்சார பாரம்பரியத்தின் களஞ்சியங்களும் ஆகும். எங்கள் திட்டம், இந்த தொலைதூர இடங்களுக்கு சுற்றுலாவை மேம்படுத்துவதற்கும், எதிர்கால சந்ததியினருக்காக அவற்றின் நீண்டகால பாதுகாப்பை உறுதி செய்வதற்கும் ஒரு டிஜிட்டல் தளத்தை உருவாக்குவதை நோக்கமாகக் கொண்டுள்ளது. பாரம்பரியம் மற்றும் நவீனத்துவம் ஆகியவற்றுக்கு இடையேயான இடைவெளியைக் குறைக்க தொழில்நுட்பத்தால் முடியும் என்று நாங்கள் நம்புகிறோம்.",
+                    missionText: "சிக்கிம் 17 ஆம் நூற்றாண்டைச் சேர்ந்த 200 க்கும் மேற்பட்ட மடாலயங்களின் தாயகமாக உள்ளது. இந்த இடங்கள் வழிபாட்டுத் தலங்கள் மட்டுமல்ல, விலைமதிப்பற்ற கலை, பண்டைய கையெழுத்துப் பிரதிகள் மற்றும் செழுமையான கலாச்சார ��ாரம்பரியத்தின் களஞ்சியங்களும் ஆகும். எங்கள் திட்டம், இந்த தொலைதூர இடங்களுக்கு சுற்றுலாவை மேம்படுத்துவதற்கும், எதிர்கால சந்ததியினருக்காக அவற்றின் நீண்டகால பாதுகாப்பை உறுதி செய்வதற்கும் ஒரு டிஜிட்டல் தளத்���ை உருவாக்குவதை நோக்கமாகக் கொண்டுள்ளது. பாரம்பரியம் மற்றும் நவீனத்துவம் ஆகியவற��றுக்கு இடையேயான இடைவெளியைக் குறைக்க தொழில்நுட்பத்தால் முடியும் என்று நாங்கள் நம்புகிறோம்.",
                     featuresTitle: "முக்கிய அம்சங்கள்",
                     cultureTraditionTitle: "கலாச்சாரம் மற்றும் பாரம்பரியம்",
                     cultureTraditionText: "சிக்கிம் மக்களின் பாரம்பரியங்கள், கலைகள் மற்றும் வாழ்க்கை முறையை ஆராயுங்கள்.",
                     touristPlaceTitle: "சுற்றுலாத் தளம்",
-                    touristPlaceText: "கலாச்சார மற்றும் கல்வி ஆராய்ச்சிக்கு சுவரோவியங்கள், தங்ககாக்கள் மற்றும் பண்டைய கையெழுத்துப் பிரதிகளின் உயர்-தெளிவுத்திறன் கொண்ட படங்களின் களஞ்சியத்தை அணுகவும்.",
+                    touristPlaceText: "கலாச்சார மற்றும் கல்வி ஆராய்ச்சிக்கு சுவரோவியங்கள், தங்ககாக்கள் மற்றும் பண்டைய கையெழுத்���ுப் பிரதிகளின் உயர்-தெளிவுத்திறன் கொண்ட படங்களின் களஞ்சியத்தை அணுகவும்.",
                     roadMapTitle: "சாலை வரைபட வழிகாட்டி",
                     roadMapText: "கேங்டாக்கில் அருகிலுள்ள ஹோட்டல்கள் மற்றும் உணவகங்களைக் கண்டறியவும்.",
                     contactTitle: "தொடர்பில் இருங்கள்",
                     nameLabel: "பெயர்",
                     emailLabel: "மின்னஞ்சல்",
                     mobileLabel: "கைபேசி எண்",
-                    reasonLabel: "காரணம்",
+                    reasonLabel: "பின்னூட்டம்",
                     reasonPlaceholder: "உங்கள் காரணத்தை இங்கே உள்ளிடவும்...",
                     sendMessageBtn: "செய்தியை அனுப்பு",
                     formSuccessMessage: "உங்கள் காரணத்திற்கு நன்றி! விரைவில் உங்களைத் தொடர்புகொள்வோம்.",
                     exploreTitle: "சுற்றுலாத் தலங்களை ஆராயுங்கள்",
                     templesTitle: "கோவில்கள்",
                     templesText: "ஆன்மீக தலங்கள் மற்றும் புனித இடங்களைக் கண்டறியவும்",
-                    mountainsTitle: "மலைகள் மற்றும் குன்றுகள்",
+                    mountainsTitle: "மலைகள் ம��்றும் குன்றுகள்",
                     mountainsText: "மலையேற்ற இடங்கள் மற்றும் ரம்மியமான காட்சிகளைக் கண்டறியவும்",
                     riversTitle: "நதிகள்",
                     riversText: "அமைதியான நதிகள் மற்றும் நீர்நிலைகளை ஆராயுங்கள்",
                     natureTitle: "இயற்கை",
-                    natureText: "காடுகள், நீர்வீழ்ச்சிகள் மற்றும் இயற்கை பூங்காக்களைக் கண்டறியவும்",
-                    cultureModalTitle: "கலாச்சாரம் மற்றும் பாரம்பரியம்",
+                    natureText: "கா���ுகள், நீர்வீழ்ச்சிகள் மற்றும் இயற்கை பூங்காக்களைக் கண்டறியவும்",
+                    cultureModalTitle: "கலாச்சாரம் மற்றும் பாரம்பரியம���",
                     traditionsTitle: "சிக்கிமின் பாரம்பரியங்கள்",
                     traditionIntro: "சிக்கிம் பாரம்பரியங்கள் பௌத்த கொள்கைகளில் ஆழமாக வேரூன்றியுள்ளன, இயற்கை மற்றும் ஆன்மீகம் ஆகிய இரண்டையும் மதிக்கின்றன.",
-                    traditionOne: "**சாம் நடனங்கள்:** மிகவும் துடிப்பான பாரம்பரியமான, இந்த முகமூடி நடனங்கள் திருவிழாக்களின் போது லாமாக்களால் நிகழ்த்தப்படுகின்றன. அவை ஒழுக்க நாடகங்களையும் நன்மை தீமையின் மீது வெற்றியையும் சித்தரிக்கின்றன.",
-                    traditionTwo: "**ல்ஹா-சோயல்:** இந்த பாரம்பரியம் காஞ்சன்ஜங்கா மலையை ஒரு புனித பாதுகாவலர் தெய்வமாக வணங்குவதை உள்ளடக்கியது. பாங் ல்ஹாப்சோல் போன்ற திருவிழாக்கள் மலைக்கு அஞ்சலி செலுத்துவதற்கும் அதன் ஆசீர்வாதங்களைப் பெறுவதற்கும் கொண்டாடப்படுகின்றன.",
-                    cultureTopicTitle: "சிக்கிமின் கலாச்சாரம்",
+                    traditionOne: "**சாம் நடனங்கள்:** மிகவும் துடிப்பான பாரம்பரியமான, இந்த முகமூடி நடனங்கள் திருவிழாக்களின் போது லாமாக்களால் நிகழ்த்தப்படுகின்றன. அவை ஒழுக்க நாடகங்களையும் நன்மை தீமையின் மீது வெற்றியையும் ச���த்தரிக்கின்றன.",
+                    traditionTwo: "**ல்ஹா-சோயல்:** இந்த பாரம்பரியம் காஞ்சன்ஜங்கா மலையை ஒரு புனித பாதுகாவலர் தெய்வமாக ���ணங்குவதை உள்ளடக்கியது. பாங் ல்ஹாப்சோல் போன்ற திருவிழாக்கள் மலைக்கு அஞ்சலி செலுத்துவதற்கும் அதன் ஆசீர்வாதங்களைப் பெறுவதற்கும் கொண்டாடப்படுகின்றன.",
+                    cultureTopicTitle: "சிக்கிமின் கலாச்ச��ரம்",
                     cultureIntro: "சிக்கிமின் கலாச்சாரம் அதன் பழங்குடி சமூகங்கள் மற்றும் அண்டை பிராந்தியங்களின் அழகான கலவையாகும், இது ஒரு தனித்துவமான மற்றும் இணக்கமான சமூகத்தை உருவாக்குகிறது.",
-                    cultureOne: "**இன வேறுபாடு:** கலாச்சாரம் முதன்மையாக பழங்குடி **லெப்சா** மக்கள், திபெத்திய வம்சாவளியைச் சேர்ந்த **பூட்டியாக்கள்** மற்றும் **நேபாளிகள்** ஆகியோரின் கலவையாகும், இதில் ஒவ்வொருவரும் தங்கள் சொந்த மொழி, பாரம்பரியங்கள் மற்றும் உணவு வகைகளை மாநிலத்தின் அடையாளத்திற்கு பங்களிக்கின்றனர்.",
-                    cultureTwo: "**கலை மற்றும் கைவினைப்பொருட்கள்:** பாரம்பரிய கலை வடிவங்களில் சிக்கலான தங்ககா ஓவியம், மர செதுக்குதல் மற்றும் நெசவு ஆகியவை அடங்கும். இந்த கைவினைப்பொருட்கள் பெரும்பாலும் பௌத்த தெய்வங்களையும் மத நூல்களின் காட்சிகளையும் சித்தரிக்கின்றன.",
+                    cultureOne: "**இன ���ேறுபாடு:** கலாச்சாரம் முதன்மையாக பழங்குடி **லெப்சா** மக்கள், திபெத்திய வம்சாவளியைச் சேர்ந்த **பூட்டியாக்கள்** மற��றும் **நேபாளிகள்** ஆகியோரின் கலவையாகும், இதில் ஒவ்வொருவரும் தங்கள் சொந்த மொழி, பாரம்பரியங்கள் மற்றும் உணவு வகைகளை மாநிலத்தின் அடையாளத்திற்கு பங்களிக்கின்றனர்.",
+                    cultureTwo: "**கலை மற்றும் கை��ினைப்பொருட்கள்:** பாரம்பரிய கலை வடிவங்களில் சிக்கலான தங்ககா ஓவியம், மர செதுக்குதல் மற்றும் நெசவு ஆகியவை அடங்கும். இந்த கைவினைப்பொருட்கள் பெரும்பாலும் பௌத்த தெய்வங்களையும் மத நூல்களின் காட்சிகளையும் சித்தரிக்கின்றன.",
                     cultureThree: "**உணவு:** சிக்கிம் உணவு நேபாள மற்றும் திபெத்திய தாக்கங்களின் கலவையாகும். மோமோ, துக்பா மற்றும் பாக்ஷாபா போன்ற பிரதான உணவுகள் பரவலாக அனுபவிக்கப்படுகின்றன மற்றும் உள்ளூர் பொருட்கள் மற்றும் காலநிலையை பிரதிபலிக்கின்றன.",
-                    copyrightText: "© 2025 டீம் ஹொரைசன். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+                    copyrightText: "© 2025 டீம் ஹொரைசன். அனைத்து உரிமைகளு���் பாதுகாக்கப்பட்டவை.",
                     hackathonText: "echoes of sikkim",
                 }
             };
@@ -824,6 +838,44 @@
             const locationSelect = document.getElementById("locationSelect");
             const locationMap = document.getElementById("locationMap");
             // const cultureModal =document.getElementById("cultureModal");
+            // Section routing: show only requested section
+            const heroSection = document.getElementById('hero');
+            const homeLink = document.querySelector('[data-lang-key="homeLink"]');
+            const aboutNav = document.querySelector('[data-lang-key="aboutLink"]');
+            const featuresNav = document.querySelector('[data-lang-key="featuresLink"]');
+            const contactNav = document.querySelector('[data-lang-key="contactLink"]');
+
+            function showSection(name) {
+                const aboutEl = document.getElementById('about');
+                const featuresEl = document.getElementById('features');
+                const contactEl = document.getElementById('contact');
+                [aboutEl, featuresEl, contactEl].forEach(el => el && el.classList.add('hidden'));
+                if (name === 'home') {
+                    if (heroSection) heroSection.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                if (heroSection) heroSection.classList.add('hidden');
+                const target = document.getElementById(name);
+                if (target) {
+                    target.classList.remove('hidden');
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            if (homeLink) homeLink.addEventListener('click', e => { e.preventDefault(); showSection('home'); });
+            if (aboutNav) aboutNav.addEventListener('click', e => { e.preventDefault(); showSection('about'); });
+            if (featuresNav) featuresNav.addEventListener('click', e => { e.preventDefault(); showSection('features'); });
+            if (contactNav) contactNav.addEventListener('click', e => { e.preventDefault(); showSection('contact'); });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const hash = window.location.hash.replace('#', '');
+                if (hash === 'about' || hash === 'features' || hash === 'contact') {
+                    showSection(hash);
+                } else {
+                    showSection('home');
+                }
+            });
             const galleries = {
                 "Temples": [{
                     name: "Rumtek Monastery",
@@ -924,11 +976,16 @@
                 roadmapModal.style.display = 'block';
             });
 
+            const mapIconBtn = document.getElementById('mapIconBtn');
+            if (mapIconBtn) {
+                mapIconBtn.addEventListener('click', function() {
+                    roadmapModal.style.display = 'block';
+                });
+            }
+
             exploreBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.getElementById('features').scrollIntoView({
-                    behavior: 'smooth'
-                });
+                showSection('features');
             });
 
             closeRoadmapModal.addEventListener('click', function() {
